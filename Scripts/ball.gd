@@ -9,10 +9,11 @@ enum AnimationState {
 
 var currentAnimationState := AnimationState.NORMAL
 var storedBounceForce : Vector3 = Vector3.ZERO
-var drag_factor : float = 0.98
-
+var drag_factor : float = 0.99
+@export var gravity : float = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	gravity_scale = gravity
 	pass # Replace with function body.
 
 

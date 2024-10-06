@@ -7,10 +7,12 @@ radius = 0.1
 
 [node name="Ball" type="RigidBody3D"]
 collision_layer = 2
+collision_mask = 5
 continuous_cd = true
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_b7e4a")
+gravity = 5.0
 
 [node name="Ball" type="Node3D" parent="."]
 
