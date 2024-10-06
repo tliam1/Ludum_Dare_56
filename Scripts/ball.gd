@@ -20,6 +20,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var speed : float = linear_velocity.length()
+	if gravity_scale != gravity:
+		gravity_scale = move_toward(gravity_scale, gravity, delta * 3)
 	pass
 
 func _integrate_forces(state):
@@ -35,3 +37,11 @@ func _integrate_forces(state):
 
 func apply_bounce_force(force : Vector3):
 	storedBounceForce = force # a direction vector * bounce force via stats.gd
+
+
+func _on_body_entered(body):
+	print(body.collision_layer)
+	if body.collision_layer == 4:
+		gravity_scale = 0
+		print(body.collision_layer)
+	pass # Replace with function body.

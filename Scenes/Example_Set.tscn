@@ -14,7 +14,6 @@ transform = Transform3D(1, 0, 0, 0, 0.968148, -0.25038, 0, 0.25038, 0.968148, 0,
 mesh = ExtResource("1_avstk")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Base1"]
-collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Base1/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wl2ue")
@@ -26,11 +25,11 @@ transform = Transform3D(0.999507, 0.0299561, -0.00944801, -0.0304103, 0.998169, 
 transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0, 3.305, 6.711)
 
 [node name="Ball" parent="." instance=ExtResource("2_8kh3p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.784981, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.343567, -1)
 gravity = 2.5
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0, 1.25, 0)
 
 [node name="Flipper" parent="." instance=ExtResource("3_8di0r")]
-transform = Transform3D(1, 0, 0, 0, 0.968148, -0.25038, 0, 0.25038, 0.968148, -0.380731, -0.90817, 4.08078)
+transform = Transform3D(0.117987, -0.0305136, 0.992546, 0.25038, 0.968148, 0, -0.960931, 0.248514, 0.121869, -0.380731, -0.916794, 4.08078)
