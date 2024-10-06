@@ -1,27 +1,136 @@
-[gd_scene load_steps=5 format=3 uid="uid://cv7nfsgcmw2cu"]
+[gd_scene load_steps=21 format=3 uid="uid://cqv8t5vnpnxaa"]
 
-[ext_resource type="ArrayMesh" uid="uid://bbmi4y1tw7je1" path="res://Base_1.obj" id="1_0aj50"]
 [ext_resource type="ArrayMesh" uid="uid://cws2ueye2jtc5" path="res://flipper.obj" id="2_p6m4m"]
+[ext_resource type="Texture2D" uid="uid://7rnq0i5ft2o3" path="res://r_aiStandardSurface3SG_BaseColor.png" id="2_qnolo"]
+[ext_resource type="Shader" path="res://OutlineShader.gdshader" id="4_f1ksm"]
+[ext_resource type="ArrayMesh" uid="uid://c2ijuu0rs1pst" path="res://skeleton.obj" id="4_oboc7"]
+[ext_resource type="Texture2D" uid="uid://b82scbgl244jy" path="res://pinball_base.png" id="5_wiikv"]
+[ext_resource type="ArrayMesh" uid="uid://blm87p08p8ljf" path="res://Base_2.obj" id="6_lwmns"]
+[ext_resource type="ArrayMesh" uid="uid://b4e05ijy7xfm4" path="res://spring.obj" id="7_skovk"]
+[ext_resource type="ArrayMesh" uid="uid://bmywl6d1m4m4k" path="res://divider_1.obj" id="8_l8u3w"]
+[ext_resource type="ArrayMesh" uid="uid://bxdiau7qum5vj" path="res://divider_2.obj" id="9_xod48"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pl2jg"]
-albedo_color = Color(0.894118, 0.901961, 0.662745, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rweg2"]
+render_priority = 0
+shader = ExtResource("4_f1ksm")
+shader_parameter/outline_color = Color(0.1, 0, 0.2, 1)
+shader_parameter/outline_width = 5.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqf8w"]
+next_pass = SubResource("ShaderMaterial_rweg2")
+shading_mode = 0
+albedo_texture = ExtResource("5_wiikv")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhphw"]
 albedo_color = Color(0.0784314, 0.486275, 0.662745, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8456j"]
+render_priority = 0
+shader = ExtResource("4_f1ksm")
+shader_parameter/outline_color = Color(0.1, 0, 0.2, 1)
+shader_parameter/outline_width = 5.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5p8xs"]
+next_pass = SubResource("ShaderMaterial_8456j")
+shading_mode = 0
+albedo_texture = ExtResource("2_qnolo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qmcjr"]
+render_priority = 0
+shader = ExtResource("4_f1ksm")
+shader_parameter/outline_color = Color(0.1, 0, 0.2, 1)
+shader_parameter/outline_width = 5.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6hes"]
+next_pass = SubResource("ShaderMaterial_qmcjr")
+albedo_color = Color(0.360784, 0.776471, 0.760784, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s02ny"]
+render_priority = 0
+shader = ExtResource("4_f1ksm")
+shader_parameter/outline_color = Color(0.1, 0, 0.2, 1)
+shader_parameter/outline_width = 5.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_agvp4"]
+next_pass = SubResource("ShaderMaterial_s02ny")
+albedo_color = Color(0.717647, 0.964706, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c5deb"]
+render_priority = 0
+shader = ExtResource("4_f1ksm")
+shader_parameter/outline_color = Color(0.1, 0, 0.2, 1)
+shader_parameter/outline_width = 5.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2it4e"]
+next_pass = SubResource("ShaderMaterial_c5deb")
+albedo_color = Color(1, 0.490196, 1, 1)
+
 [node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.618836, -0.10958, -0.677196)
 
-[node name="Base1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.288641, -1.19209e-07, -1.36902)
-mesh = ExtResource("1_0aj50")
-surface_material_override/0 = SubResource("StandardMaterial3D_pl2jg")
+[node name="Base2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.214675, 0.106487, -1.59908)
+material_override = SubResource("StandardMaterial3D_sqf8w")
+mesh = ExtResource("6_lwmns")
 
-[node name="Flipper" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.35815e-08, -1.88164e-16, -0.539482, 1.88164e-16, 0.539482, -1.88164e-16, 0.539482, -1.88164e-16, -2.35815e-08, 0.251689, 0.0502825, 1.68432)
+[node name="Flipper" type="MeshInstance3D" parent="Base2"]
+transform = Transform3D(-2.35815e-08, -1.88164e-16, -0.539482, 1.88164e-16, 0.539482, -1.88164e-16, 0.539482, -1.88164e-16, -2.35815e-08, 0.466364, -0.0562043, 3.2834)
 mesh = ExtResource("2_p6m4m")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_uhphw")
 
-[node name="Flipper2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.35815e-08, 1.88164e-16, 0.539482, 1.88164e-16, 0.539482, -1.88164e-16, -0.539482, 1.88164e-16, -2.35815e-08, -0.766555, 0.0502827, 1.68987)
+[node name="Flipper2" type="MeshInstance3D" parent="Base2"]
+transform = Transform3D(-2.35815e-08, 1.88164e-16, 0.539482, 1.88164e-16, 0.539482, -1.88164e-16, -0.539482, 1.88164e-16, -2.35815e-08, -0.552006, -0.0583944, 3.29739)
 mesh = ExtResource("2_p6m4m")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_uhphw")
+
+[node name="Skeleton" type="MeshInstance3D" parent="Base2"]
+transform = Transform3D(0.211384, -0.010741, 0.401529, 0.00459917, 0.453771, 0.00971733, -0.401646, -0.000456892, 0.211433, -0.960039, 0.174386, 1.46038)
+material_override = SubResource("StandardMaterial3D_5p8xs")
+cast_shadow = 0
+mesh = ExtResource("4_oboc7")
+skeleton = NodePath("../..")
+
+[node name="Skeleton2" type="MeshInstance3D" parent="Base2"]
+transform = Transform3D(0.375616, 0.00164985, -0.254821, 0.073381, 0.433962, 0.110976, 0.244032, -0.133033, 0.358851, 0.980053, 0.174386, -0.302448)
+material_override = SubResource("StandardMaterial3D_5p8xs")
+cast_shadow = 0
+mesh = ExtResource("4_oboc7")
+skeleton = NodePath("../..")
+
+[node name="Spring" type="MeshInstance3D" parent="Base2"]
+transform = Transform3D(1.07023, 0, 0, 0, 1.07023, 0, 0, 0, 1.07023, 1.88757, 0.247007, 2.53835)
+material_override = SubResource("StandardMaterial3D_f6hes")
+mesh = ExtResource("7_skovk")
+skeleton = NodePath("../..")
+
+[node name="Divider1" type="MeshInstance3D" parent="Base2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.959167, 0.107329, -0.476876)
+material_override = SubResource("StandardMaterial3D_agvp4")
+mesh = ExtResource("8_l8u3w")
+skeleton = NodePath("../..")
+
+[node name="Divider2" type="MeshInstance3D" parent="Base2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.308407, 0.107329, -0.476876)
+material_override = SubResource("StandardMaterial3D_agvp4")
+mesh = ExtResource("8_l8u3w")
+skeleton = NodePath("../..")
+
+[node name="Divider3" type="MeshInstance3D" parent="Base2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.229509, 0.107329, -0.476876)
+material_override = SubResource("StandardMaterial3D_agvp4")
+mesh = ExtResource("8_l8u3w")
+skeleton = NodePath("../..")
+
+[node name="Divider4" type="MeshInstance3D" parent="Base2"]
+transform = Transform3D(-0.127549, 0, -0.991832, 0, 1, 0, 0.991832, 0, -0.127549, -0.830251, 0.10435, -2.13214)
+material_override = SubResource("StandardMaterial3D_2it4e")
+mesh = ExtResource("9_xod48")
+skeleton = NodePath("../..")
+
+[node name="Divider5" type="MeshInstance3D" parent="Base2"]
+transform = Transform3D(-0.995311, 0, -0.0967317, 0, 1, 0, 0.0967317, 0, -0.99531, 0.623882, 0.10435, -2.13214)
+material_override = SubResource("StandardMaterial3D_2it4e")
+mesh = ExtResource("9_xod48")
+skeleton = NodePath("../..")
