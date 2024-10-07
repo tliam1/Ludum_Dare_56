@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://k3m6bw4pjyep"]
+[gd_scene load_steps=6 format=3 uid="uid://k3m6bw4pjyep"]
 
 [ext_resource type="Script" path="res://Scripts/Flipper.gd" id="1_7xkkv"]
 [ext_resource type="ArrayMesh" uid="uid://b1j20v3l7hr58" path="res://Asset/flipper.obj" id="1_fh2iq"]
+[ext_resource type="AudioStream" uid="uid://dwd8sx43265o6" path="res://Audio/flipper_sfx.mp3" id="3_a5loe"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dweg2"]
 friction = 0.0
@@ -31,3 +32,7 @@ shape = SubResource("ConvexPolygonShape3D_ky6li")
 [node name="Flipper" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_fh2iq")
 skeleton = NodePath("../..")
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_a5loe")
+volume_db = -10.0

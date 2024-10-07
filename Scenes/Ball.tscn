@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://blx5qh850axr8"]
+[gd_scene load_steps=5 format=3 uid="uid://blx5qh850axr8"]
 
 [ext_resource type="Script" path="res://Scripts/ball.gd" id="1_b7e4a"]
+[ext_resource type="AudioStream" uid="uid://co22b0xv6bcnt" path="res://Audio/dividers_sfx.mp3" id="2_tlhyv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_05v53"]
 friction = 0.0
@@ -25,5 +26,9 @@ shape = SubResource("SphereShape3D_jfldt")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 radius = 0.1
+
+[node name="DividerHitSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_tlhyv")
+volume_db = -20.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

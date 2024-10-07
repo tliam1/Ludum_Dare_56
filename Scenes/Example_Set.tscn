@@ -1,12 +1,12 @@
-[gd_scene load_steps=53 format=3 uid="uid://dojsjfq0pikji"]
+[gd_scene load_steps=57 format=3 uid="uid://dojsjfq0pikji"]
 
 [ext_resource type="ArrayMesh" uid="uid://dena7wqdhljxn" path="res://Asset/Base_1.obj" id="1_avstk"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_q4c5j"]
 [ext_resource type="PackedScene" uid="uid://blx5qh850axr8" path="res://Scenes/Ball.tscn" id="2_8kh3p"]
-[ext_resource type="Texture2D" uid="uid://b11e4wra6eqf5" path="res://Asset/pinball-base-UV.png" id="2_wy28v"]
+[ext_resource type="Texture2D" uid="uid://dr1j4cpwta7ac" path="res://Asset/pinball-base-UV.png" id="2_wy28v"]
 [ext_resource type="PackedScene" uid="uid://k3m6bw4pjyep" path="res://Scenes/Flipper.tscn" id="3_8di0r"]
 [ext_resource type="Shader" path="res://Shader/OutlineShader.gdshader" id="4_ai4o5"]
-[ext_resource type="Texture2D" uid="uid://7rnq0i5ft2o3" path="res://Asset/r_aiStandardSurface3SG_BaseColor.png" id="7_brpir"]
+[ext_resource type="Texture2D" uid="uid://drngxq2aqmh2i" path="res://Asset/r_aiStandardSurface3SG_BaseColor.png" id="7_brpir"]
 [ext_resource type="Script" path="res://Scripts/pin.gd" id="7_hul0w"]
 [ext_resource type="Script" path="res://Scripts/PinScoreAmount.gd" id="8_f7hwk"]
 [ext_resource type="ArrayMesh" uid="uid://c2ijuu0rs1pst" path="res://Asset/skeleton.obj" id="8_pm3pv"]
@@ -15,6 +15,10 @@
 [ext_resource type="ArrayMesh" uid="uid://bl0nug0r0m37b" path="res://Asset/divider_1.obj" id="11_115c8"]
 [ext_resource type="PackedScene" uid="uid://d36s45ut2p3rt" path="res://Scenes/UI/Game_Info_Panel.tscn" id="12_6jdhv"]
 [ext_resource type="PackedScene" uid="uid://brqk0pmgfk2jj" path="res://Scenes/UI/GameOver.tscn" id="15_a57i3"]
+[ext_resource type="AudioStream" uid="uid://d4lsdka6u0oos" path="res://Audio/灵林Ling Lin 星の幻想曲Fantasy of the Stars.mp3" id="16_fh468"]
+[ext_resource type="AudioStream" uid="uid://dtla4r6exbir0" path="res://Audio/pinball_launch.mp3" id="17_2pb2s"]
+[ext_resource type="AudioStream" uid="uid://bcn36rfhf1djv" path="res://Audio/pinball_respawn.mp3" id="17_gfa3i"]
+[ext_resource type="AudioStream" uid="uid://co22b0xv6bcnt" path="res://Audio/dividers_sfx.mp3" id="18_efp63"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vk2xi"]
 render_priority = 0
@@ -454,6 +458,27 @@ wait_time = 0.1
 one_shot = true
 
 [node name="GameOver" parent="." instance=ExtResource("15_a57i3")]
+
+[node name="Audio" type="Node3D" parent="."]
+
+[node name="MainMusic" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("16_fh468")
+volume_db = -18.0
+autoplay = true
+
+[node name="LoseSFX" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("17_gfa3i")
+
+[node name="RespawnSFX" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("17_gfa3i")
+
+[node name="ObstacleHitSFX" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("18_efp63")
+volume_db = -10.0
+
+[node name="SpringLaunchSFX" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("17_2pb2s")
+volume_db = -10.0
 
 [connection signal="body_entered" from="Base1/OutOfBounds_Area" to="." method="_on_out_of_bounds_area_body_entered"]
 [connection signal="assignNewPoints" from="Ball" to="." method="_on_ball_assign_new_points"]

@@ -13,6 +13,8 @@ var storedBounceForce : Vector3 = Vector3.ZERO
 signal inSpawnZone
 signal assignNewPoints(points : float)
 @export var gravity : float = 1
+@onready var divider_hit_sfx = $DividerHitSFX
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	gravity_scale = gravity
@@ -58,6 +60,9 @@ func _on_body_entered(body):
 	if body.collision_layer == 128:
 		var earned_points : float = body.get_parent().pinInfo.hit_reward
 		assignNewPoints.emit(earned_points)
+		divider_hit_sfx.pitch_scale = randf_range(0.9,1.1)
+		divider_hit_sfx.stop()
+		divider_hit_sfx.play()
 	if body.collision_layer == 4:
 		var earned_points : float = body.pinInfo.hit_reward
 		assignNewPoints.emit(earned_points)

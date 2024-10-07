@@ -7,11 +7,20 @@ extends Node3D
 @onready var cooldown_timer = $Cooldown
 @onready var game_over_score_canvas_layer = $GameOver
 
+@onready var respawn_sfx = $Audio/RespawnSFX
+@onready var lose_sfx = $Audio/LoseSFX
+@onready var obstacle_hit_sfx = $Audio/ObstacleHitSFX
+@onready var spring_launch_sfx = $Audio/SpringLaunchSFX
+
+
 
 var game_info : GameInfo = GameInfo.new()
 
 var in_spawn_zone : bool = true
 var launch_power : float = 0
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ball.global_position = spawn_point.global_position
@@ -30,6 +39,7 @@ func _process(delta):
 			launch_power = 0
 			in_spawn_zone = false
 			cooldown_timer.start()
+			spring_launch_sfx.play()
 		elif !Input.is_action_pressed("Launch_Ball") and spring.position.z != 2.5:
 			spring.position.z = move_toward(spring.position.z, 2.5, delta*5)
 	pass
@@ -53,10 +63,12 @@ func _on_ball_assign_new_points(points):
 func _on_out_of_bounds_area_body_entered(body):
 	game_info.balls_Left -= 1
 	ball.global_position = spawn_point.global_position
+	respawn_sfx.play()
 	if game_info.balls_Left >= 0:
 		score_canvas_layer.UpdateBallsLeft(game_info.balls_Left)
 	if game_info.balls_Left < 0:
 		game_over_score_canvas_layer.bring_up()
+		lose_sfx.play()
 		# bring up end of game info
 		pass
 	pass # Replace with function body.

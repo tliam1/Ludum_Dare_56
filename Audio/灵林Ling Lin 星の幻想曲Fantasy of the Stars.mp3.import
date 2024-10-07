@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d4lsdka6u0oos"
+path="res://.godot/imported/灵林Ling Lin 星の幻想曲Fantasy of the Stars.mp3-ccca380bd1cb04a316b52b03be6ed270.mp3str"
+
+[deps]
+
+source_file="res://Audio/灵林Ling Lin 星の幻想曲Fantasy of the Stars.mp3"
+dest_files=["res://.godot/imported/灵林Ling Lin 星の幻想曲Fantasy of the Stars.mp3-ccca380bd1cb04a316b52b03be6ed270.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

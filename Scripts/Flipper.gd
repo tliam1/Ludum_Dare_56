@@ -8,6 +8,9 @@ enum FlipperType {
 @export var flipperType : FlipperType
 @onready var flipper_mesh = $Flipper
 @export var pinInfo : PinInfo
+@onready var sfx = $sfx
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,11 +31,15 @@ func Move_Flipper():
 	if flipperType == FlipperType.RIGHT_FLIPPER and Input.is_action_just_pressed("Move_Right"):
 #		print("RIGHT FLIPPER MOVES to yRot -150")
 		rotate_flipper_to(-150)
+		sfx.stop()
+		sfx.play()
 		physics_material_override.bounce = 1
 		pass
 	elif flipperType == FlipperType.LEFT_FLIPPER and Input.is_action_just_pressed("Move_Left"):
 #		print("LEFT FLIPPER MOVES yRot 150")
 		rotate_flipper_to(150)
+		sfx.stop()
+		sfx.play()
 		physics_material_override.bounce = 1
 		pass
 	
