@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dojsjfq0pikji"]
+[gd_scene load_steps=11 format=3 uid="uid://dojsjfq0pikji"]
 
 [ext_resource type="ArrayMesh" uid="uid://dena7wqdhljxn" path="res://Asset/Base_1.obj" id="1_avstk"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_q4c5j"]
@@ -18,6 +18,9 @@ data = PackedVector3Array(-1.6362, 0.3828, 4.0566, -1.87, 0.3828, 4.0566, -1.636
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w5t3j"]
 size = Vector3(5.89, 0.07, 9.13)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r0ct0"]
+size = Vector3(0.14, 1.25, 1)
 
 [node name="Example_Set" type="Node3D"]
 script = ExtResource("1_q4c5j")
@@ -43,6 +46,23 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Base1/FakeGround"]
 shape = SubResource("BoxShape3D_w5t3j")
 
+[node name="FakeCieling" type="StaticBody3D" parent="Base1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34, 0)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base1/FakeCieling"]
+shape = SubResource("BoxShape3D_w5t3j")
+
+[node name="SpawnAreaDetector" type="Area3D" parent="Base1"]
+transform = Transform3D(1, 0, 0, 0, 0.968146, 0.25038, 0, -0.25038, 0.968146, 1.57287, -0.0958626, -2.29467)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base1/SpawnAreaDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024184, 0, -0.119234)
+shape = SubResource("BoxShape3D_r0ct0")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0, 3.305, 6.711)
 
@@ -63,3 +83,5 @@ directional_shadow_split_3 = 0.0
 [node name="Flipper" parent="." instance=ExtResource("3_8di0r")]
 transform = Transform3D(0.117987, -0.0305136, 0.992546, 0.25038, 0.968148, 0, -0.960931, 0.248514, 0.121869, -0.380731, -0.916794, 4.08078)
 mass = 300.0
+
+[connection signal="body_entered" from="Base1/SpawnAreaDetector" to="." method="_on_spawn_area_detector_body_entered"]
