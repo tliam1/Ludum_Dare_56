@@ -14,6 +14,9 @@ config/name="LudumDare"
 <<<<<<< Updated upstream
 =======
 run/main_scene="res://Scenes/Example_Set.tscn"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
