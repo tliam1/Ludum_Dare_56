@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://e2aq38s5ompq"
+path="res://.godot/imported/divider_2.obj-9365163df1e4c3610c1eaf8c958c702b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/divider_2.obj-9365163df1e4c3610c1eaf8c958c702b.mesh"]
+
+source_file="res://Asset/divider_2.obj"
+dest_files=["res://.godot/imported/divider_2.obj-9365163df1e4c3610c1eaf8c958c702b.mesh", "res://.godot/imported/divider_2.obj-9365163df1e4c3610c1eaf8c958c702b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

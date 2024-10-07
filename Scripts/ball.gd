@@ -28,7 +28,7 @@ func _integrate_forces(state):
 	var velocity = state.get_linear_velocity()
 	# applying the bounce force
 	if storedBounceForce != Vector3.ZERO:
-		state.set_linear_velocity(velocity + storedBounceForce)
+		state.set_linear_velocity(storedBounceForce)
 		storedBounceForce = Vector3.ZERO
 	
 	# Apply drag to slow the ball down

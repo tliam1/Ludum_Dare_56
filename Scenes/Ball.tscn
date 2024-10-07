@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c13tog2cc1fed"]
+[gd_scene load_steps=4 format=3 uid="uid://birgsybtii1yd"]
 
 [ext_resource type="Script" path="res://Scripts/ball.gd" id="1_b7e4a"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_05v53"]
 friction = 0.0
-bounce = 0.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jfldt"]
 radius = 0.1
@@ -17,7 +16,7 @@ continuous_cd = true
 max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("1_b7e4a")
-gravity = 5.0
+gravity = 6.5
 
 [node name="Ball" type="Node3D" parent="."]
 
