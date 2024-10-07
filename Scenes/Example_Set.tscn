@@ -1,12 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://dojsjfq0pikji"]
+[gd_scene load_steps=25 format=3 uid="uid://dojsjfq0pikji"]
 
 [ext_resource type="ArrayMesh" uid="uid://dena7wqdhljxn" path="res://Asset/Base_1.obj" id="1_avstk"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_q4c5j"]
 [ext_resource type="PackedScene" uid="uid://birgsybtii1yd" path="res://Scenes/Ball.tscn" id="2_8kh3p"]
 [ext_resource type="Texture2D" uid="uid://b11e4wra6eqf5" path="res://Asset/pinball-base-UV.png" id="2_wy28v"]
 [ext_resource type="PackedScene" uid="uid://crbohlvtou11g" path="res://Scenes/Flipper.tscn" id="3_8di0r"]
+[ext_resource type="Shader" path="res://Shader/OutlineShader.gdshader" id="4_ai4o5"]
+[ext_resource type="Texture2D" uid="uid://7rnq0i5ft2o3" path="res://Asset/r_aiStandardSurface3SG_BaseColor.png" id="7_brpir"]
+[ext_resource type="ArrayMesh" uid="uid://c2ijuu0rs1pst" path="res://Asset/skeleton.obj" id="8_pm3pv"]
+[ext_resource type="ArrayMesh" uid="uid://e2aq38s5ompq" path="res://Asset/triangle.obj" id="9_2n0q1"]
+[ext_resource type="ArrayMesh" uid="uid://b4e05ijy7xfm4" path="res://Asset/spring.obj" id="10_d6r1j"]
+[ext_resource type="ArrayMesh" uid="uid://bl0nug0r0m37b" path="res://Asset/divider_1.obj" id="11_115c8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vk2xi"]
+render_priority = 0
+shader = ExtResource("4_ai4o5")
+shader_parameter/outline_color = Color(0.1, 0, 0.2, 1)
+shader_parameter/outline_width = 5.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkx1w"]
+next_pass = SubResource("ShaderMaterial_vk2xi")
+shading_mode = 0
 albedo_texture = ExtResource("2_wy28v")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_56x23"]
@@ -19,8 +33,47 @@ data = PackedVector3Array(-1.6362, 0.3828, 4.0566, -1.87, 0.3828, 4.0566, -1.636
 [sub_resource type="BoxShape3D" id="BoxShape3D_w5t3j"]
 size = Vector3(5.89, 0.07, 9.13)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_r0ct0"]
-size = Vector3(0.14, 1.25, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7u1kb"]
+render_priority = 0
+shader = ExtResource("4_ai4o5")
+shader_parameter/outline_color = Color(0.1, 0, 0.2, 1)
+shader_parameter/outline_width = 7.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5812"]
+next_pass = SubResource("ShaderMaterial_7u1kb")
+shading_mode = 0
+albedo_texture = ExtResource("7_brpir")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qittl"]
+render_priority = 0
+shader = ExtResource("4_ai4o5")
+shader_parameter/outline_color = Color(0.1, 0, 0.2, 1)
+shader_parameter/outline_width = 7.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uotui"]
+next_pass = SubResource("ShaderMaterial_qittl")
+albedo_color = Color(0.905882, 0.607843, 0.862745, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_isfa4"]
+render_priority = 0
+shader = ExtResource("4_ai4o5")
+shader_parameter/outline_color = Color(0.1, 0, 0.2, 1)
+shader_parameter/outline_width = 7.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a433j"]
+next_pass = SubResource("ShaderMaterial_isfa4")
+shading_mode = 0
+albedo_color = Color(0.521569, 0.733333, 0.92549, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uthqb"]
+render_priority = 0
+shader = ExtResource("4_ai4o5")
+shader_parameter/outline_color = Color(0.1, 0, 0.2, 1)
+shader_parameter/outline_width = 7.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bo1pw"]
+next_pass = SubResource("ShaderMaterial_uthqb")
+albedo_color = Color(1, 0.705882, 0.501961, 1)
 
 [node name="Example_Set" type="Node3D"]
 script = ExtResource("1_q4c5j")
@@ -46,23 +99,6 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Base1/FakeGround"]
 shape = SubResource("BoxShape3D_w5t3j")
 
-[node name="FakeCieling" type="StaticBody3D" parent="Base1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34, 0)
-collision_layer = 16
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Base1/FakeCieling"]
-shape = SubResource("BoxShape3D_w5t3j")
-
-[node name="SpawnAreaDetector" type="Area3D" parent="Base1"]
-transform = Transform3D(1, 0, 0, 0, 0.968146, 0.25038, 0, -0.25038, 0.968146, 1.57287, -0.0958626, -2.29467)
-collision_layer = 32
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Base1/SpawnAreaDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024184, 0, -0.119234)
-shape = SubResource("BoxShape3D_r0ct0")
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0, 3.305, 6.711)
 
@@ -84,4 +120,22 @@ directional_shadow_split_3 = 0.0
 transform = Transform3D(0.117987, -0.0305136, 0.992546, 0.25038, 0.968148, 0, -0.960931, 0.248514, 0.121869, -0.380731, -0.916794, 4.08078)
 mass = 300.0
 
-[connection signal="body_entered" from="Base1/SpawnAreaDetector" to="." method="_on_spawn_area_detector_body_entered"]
+[node name="Skeleton" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.324304, 0, 0.40721, 0, 0.52057, 0, -0.40721, 0, 0.324304, -0.785044, -0.247475, 2.25612)
+material_override = SubResource("StandardMaterial3D_o5812")
+mesh = ExtResource("8_pm3pv")
+
+[node name="Triangle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.164471, -0.711035, 2.88916)
+material_override = SubResource("StandardMaterial3D_uotui")
+mesh = ExtResource("9_2n0q1")
+
+[node name="Spring" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.924725, -0.380635, 0, 0.380635, 0.924726, 1.90013, -0.38341, 2.56016)
+material_override = SubResource("StandardMaterial3D_a433j")
+mesh = ExtResource("10_d6r1j")
+
+[node name="Divider1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519408, -0.61017, 2.49914)
+material_override = SubResource("StandardMaterial3D_bo1pw")
+mesh = ExtResource("11_115c8")
