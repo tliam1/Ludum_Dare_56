@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://brqk0pmgfk2jj"]
+
+[ext_resource type="Script" path="res://Scripts/GameOver.gd" id="1_fw2sy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2de3t"]
+font_size = 32
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_fw2sy")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.5
+offset_top = -121.5
+offset_right = 210.5
+offset_bottom = 121.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="retry_button" type="Button" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = -97.0
+offset_right = -27.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Retry"
+
+[node name="Label" type="Label" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -101.0
+offset_top = 38.0
+offset_right = 101.0
+offset_bottom = 95.0
+grow_horizontal = 2
+text = "Game Over!"
+label_settings = SubResource("LabelSettings_2de3t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Control/Panel/retry_button" to="." method="_on_button_pressed"]

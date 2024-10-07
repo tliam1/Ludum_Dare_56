@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dojsjfq0pikji"]
+[gd_scene load_steps=53 format=3 uid="uid://dojsjfq0pikji"]
 
 [ext_resource type="ArrayMesh" uid="uid://dena7wqdhljxn" path="res://Asset/Base_1.obj" id="1_avstk"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_q4c5j"]
@@ -14,6 +14,7 @@
 [ext_resource type="ArrayMesh" uid="uid://b4e05ijy7xfm4" path="res://Asset/spring.obj" id="10_d6r1j"]
 [ext_resource type="ArrayMesh" uid="uid://bl0nug0r0m37b" path="res://Asset/divider_1.obj" id="11_115c8"]
 [ext_resource type="PackedScene" uid="uid://d36s45ut2p3rt" path="res://Scenes/UI/Game_Info_Panel.tscn" id="12_6jdhv"]
+[ext_resource type="PackedScene" uid="uid://brqk0pmgfk2jj" path="res://Scenes/UI/GameOver.tscn" id="15_a57i3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vk2xi"]
 render_priority = 0
@@ -216,7 +217,7 @@ shape = SubResource("ConcavePolygonShape3D_cr4h5")
 transform = Transform3D(1, 0, 0, 0, 1, 1.49012e-08, 0, -1.49012e-08, 1, -0.12, -0.113, -0.521)
 
 [node name="Divider1" type="MeshInstance3D" parent="Base1/Triple_Divider_Group"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 5.96046e-08, 0, -5.96046e-08, 0.999999, 0.860132, 0.275316, 0.0619932)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 5.96046e-08, 0, -5.96046e-08, 0.999999, 0.860132, 0.315, 0.0619932)
 material_override = SubResource("StandardMaterial3D_bo1pw")
 mesh = ExtResource("11_115c8")
 skeleton = NodePath("../../..")
@@ -232,7 +233,7 @@ physics_material_override = SubResource("PhysicsMaterial_pvmeq")
 shape = SubResource("ConcavePolygonShape3D_1dmad")
 
 [node name="Divider2" type="MeshInstance3D" parent="Base1/Triple_Divider_Group"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 8.9407e-08, 0, -8.9407e-08, 0.999999, 0.0513595, 0.275, 0.062)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 8.9407e-08, 0, -8.9407e-08, 0.999999, 0.0513595, 0.315, 0.062)
 material_override = SubResource("StandardMaterial3D_bo1pw")
 mesh = ExtResource("11_115c8")
 skeleton = NodePath("../../..")
@@ -248,7 +249,7 @@ physics_material_override = SubResource("PhysicsMaterial_pvmeq")
 shape = SubResource("ConcavePolygonShape3D_dn6xk")
 
 [node name="Divider3" type="MeshInstance3D" parent="Base1/Triple_Divider_Group"]
-transform = Transform3D(1, 0, 0, 0, 0.999998, 5.96046e-08, 0, -5.96046e-08, 0.999998, -0.811963, 0.275316, 0.0619933)
+transform = Transform3D(1, 0, 0, 0, 0.999998, 5.96046e-08, 0, -5.96046e-08, 0.999998, -0.811963, 0.315, 0.0619933)
 material_override = SubResource("StandardMaterial3D_bo1pw")
 mesh = ExtResource("11_115c8")
 skeleton = NodePath("../../..")
@@ -301,7 +302,7 @@ shape = SubResource("ConcavePolygonShape3D_8o1kg")
 [node name="Skeleton_Group" type="Node3D" parent="Base1"]
 
 [node name="Skeleton" type="MeshInstance3D" parent="Base1/Skeleton_Group"]
-transform = Transform3D(0.517326, 0.0580273, 0, -0.0580075, 0.517148, -0.0136269, -0.00151898, 0.013542, 0.520391, -0.0701418, 0.294212, -1.95901)
+transform = Transform3D(0.52057, 0, 0, 0, 0.520569, 0, 0, 0, 0.520569, -0.0701418, 0.294212, -1.95901)
 material_override = SubResource("StandardMaterial3D_o5812")
 mesh = ExtResource("8_pm3pv")
 skeleton = NodePath("../../..")
@@ -452,7 +453,10 @@ camera_attributes = SubResource("CameraAttributesPractical_ndqg4")
 wait_time = 0.1
 one_shot = true
 
+[node name="GameOver" parent="." instance=ExtResource("15_a57i3")]
+
 [connection signal="body_entered" from="Base1/OutOfBounds_Area" to="." method="_on_out_of_bounds_area_body_entered"]
 [connection signal="assignNewPoints" from="Ball" to="." method="_on_ball_assign_new_points"]
 [connection signal="inSpawnZone" from="Ball" to="." method="_on_ball_in_spawn_zone"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="reset_game" from="GameOver" to="." method="_on_game_over_reset_game"]

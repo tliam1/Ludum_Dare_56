@@ -3,8 +3,9 @@ extends Node3D
 @onready var ball = $Ball
 @onready var spawn_point = $Base1/SpawnPoint
 @onready var spring = $Base1/Spring
-@onready var canvas_layer = $CanvasLayer
+@onready var score_canvas_layer = $CanvasLayer
 @onready var cooldown_timer = $Cooldown
+@onready var game_over_score_canvas_layer = $GameOver
 
 
 var game_info : GameInfo = GameInfo.new()
@@ -19,17 +20,18 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if in_spawn_zone and Input.is_action_pressed("Launch_Ball"):
-		launch_power = move_toward(launch_power, 1, delta)
-		spring.position.z = move_toward(spring.position.z, 2.9, delta/3)
-		print(launch_power)
-	elif in_spawn_zone and Input.is_action_just_released("Launch_Ball"):
-		ball.apply_central_impulse(Vector3.UP * launch_power * 15)
-		launch_power = 0
-		in_spawn_zone = false
-		cooldown_timer.start()
-	elif !Input.is_action_pressed("Launch_Ball") and spring.position.z != 2.5:
-		spring.position.z = move_toward(spring.position.z, 2.5, delta*5)
+	if game_info.balls_Left >= 0:
+		if in_spawn_zone and Input.is_action_pressed("Launch_Ball"):
+			launch_power = move_toward(launch_power, 1, delta)
+			spring.position.z = move_toward(spring.position.z, 2.9, delta/3)
+			print(launch_power)
+		elif in_spawn_zone and Input.is_action_just_released("Launch_Ball"):
+			ball.apply_central_impulse(Vector3.UP * launch_power * 15)
+			launch_power = 0
+			in_spawn_zone = false
+			cooldown_timer.start()
+		elif !Input.is_action_pressed("Launch_Ball") and spring.position.z != 2.5:
+			spring.position.z = move_toward(spring.position.z, 2.5, delta*5)
 	pass
 
 
@@ -43,7 +45,7 @@ func _on_ball_in_spawn_zone():
 
 func _on_ball_assign_new_points(points):
 	game_info.score += points
-	canvas_layer.target_score = game_info.score
+	score_canvas_layer.target_score = game_info.score
 	print(game_info.score)
 	pass # Replace with function body.
 
@@ -51,12 +53,23 @@ func _on_ball_assign_new_points(points):
 func _on_out_of_bounds_area_body_entered(body):
 	game_info.balls_Left -= 1
 	ball.global_position = spawn_point.global_position
-	canvas_layer.UpdateBallsLeft(game_info.balls_Left)
-	if game_info.balls_Left == 0:
+	if game_info.balls_Left >= 0:
+		score_canvas_layer.UpdateBallsLeft(game_info.balls_Left)
+	if game_info.balls_Left < 0:
+		game_over_score_canvas_layer.bring_up()
 		# bring up end of game info
 		pass
 	pass # Replace with function body.
 
 
 func _on_cooldown_timeout():
+	pass # Replace with function body.
+
+
+func _on_game_over_reset_game():
+	game_info.balls_Left = 3
+	game_info.score = 0
+	score_canvas_layer.UpdateBallsLeft(game_info.balls_Left)
+	score_canvas_layer.current_score = 0
+	score_canvas_layer.target_score = 0
 	pass # Replace with function body.
