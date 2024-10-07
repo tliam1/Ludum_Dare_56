@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://d36s45ut2p3rt"]
+
+[ext_resource type="Script" path="res://Scripts/UI_Handler.gd" id="1_vv4n1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mw1c"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g47cx"]
+font_size = 32
+
+[node name="CanvasLayer" type="CanvasLayer"]
+follow_viewport_enabled = true
+script = ExtResource("1_vv4n1")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8mw1c")
+
+[node name="Score" type="Label" parent="Control/Panel"]
+layout_mode = 0
+offset_right = 410.0
+offset_bottom = 73.0
+text = "9999999"
+label_settings = SubResource("LabelSettings_g47cx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Remaining_Balls" type="Label" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -410.0
+offset_bottom = 73.0
+grow_horizontal = 0
+text = "3 Balls Remaining"
+label_settings = SubResource("LabelSettings_g47cx")
+horizontal_alignment = 1
+vertical_alignment = 1

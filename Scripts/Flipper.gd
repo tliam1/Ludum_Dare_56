@@ -5,13 +5,14 @@ enum FlipperType {
 	RIGHT_FLIPPER,
 }
 
-@export var flipperStats : Organism_Stats # rename class later
 @export var flipperType : FlipperType
 @onready var flipper_mesh = $Flipper
+@export var pinInfo : PinInfo
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rotation_degrees.y = (65 if flipperType == FlipperType.LEFT_FLIPPER else -65)
+	physics_material_override.bounce = .3
 	pass # Replace with function body.
 
 
@@ -27,20 +28,24 @@ func Move_Flipper():
 	if flipperType == FlipperType.RIGHT_FLIPPER and Input.is_action_just_pressed("Move_Right"):
 #		print("RIGHT FLIPPER MOVES to yRot -150")
 		rotate_flipper_to(-150)
+		physics_material_override.bounce = 1
 		pass
 	elif flipperType == FlipperType.LEFT_FLIPPER and Input.is_action_just_pressed("Move_Left"):
 #		print("LEFT FLIPPER MOVES yRot 150")
 		rotate_flipper_to(150)
+		physics_material_override.bounce = 1
 		pass
 	
 	
 	if flipperType == FlipperType.RIGHT_FLIPPER and Input.is_action_just_released("Move_Right"):
 #		print("RIGHT FLIPPER MOVES BACK to -90")
 		rotate_flipper_to(-65)
+		physics_material_override.bounce = .3
 		pass
 	elif flipperType == FlipperType.LEFT_FLIPPER and Input.is_action_just_released("Move_Left"):
 #		print("LEFT FLIPPER MOVES BACK to 90")
 		rotate_flipper_to(65)
+		physics_material_override.bounce = .3
 		pass
 
 
