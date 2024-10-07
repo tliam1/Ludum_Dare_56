@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=21 format=3 uid="uid://cqv8t5vnpnxaa"]
 
 [ext_resource type="ArrayMesh" uid="uid://cws2ueye2jtc5" path="res://flipper.obj" id="2_p6m4m"]
@@ -9,6 +10,19 @@
 [ext_resource type="ArrayMesh" uid="uid://b4e05ijy7xfm4" path="res://spring.obj" id="7_skovk"]
 [ext_resource type="ArrayMesh" uid="uid://bmywl6d1m4m4k" path="res://divider_1.obj" id="8_l8u3w"]
 [ext_resource type="ArrayMesh" uid="uid://bxdiau7qum5vj" path="res://divider_2.obj" id="9_xod48"]
+=======
+[gd_scene load_steps=21 format=3 uid="uid://bb5l2gioueggl"]
+
+[ext_resource type="ArrayMesh" path="res://flipper.obj" id="2_p6m4m"]
+[ext_resource type="Texture2D" path="res://r_aiStandardSurface3SG_BaseColor.png" id="2_qnolo"]
+[ext_resource type="Shader" path="res://OutlineShader.gdshader" id="4_f1ksm"]
+[ext_resource type="ArrayMesh" path="res://skeleton.obj" id="4_oboc7"]
+[ext_resource type="Texture2D" path="res://pinball_base.png" id="5_wiikv"]
+[ext_resource type="ArrayMesh" path="res://Base_2.obj" id="6_lwmns"]
+[ext_resource type="ArrayMesh" path="res://spring.obj" id="7_skovk"]
+[ext_resource type="ArrayMesh" path="res://divider_1.obj" id="8_l8u3w"]
+[ext_resource type="ArrayMesh" path="res://divider_2.obj" id="9_xod48"]
+>>>>>>> Stashed changes
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rweg2"]
 render_priority = 0

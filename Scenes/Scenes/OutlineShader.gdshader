@@ -2,7 +2,7 @@ shader_type spatial;
 render_mode cull_front, unshaded;
 
 uniform vec4 outline_color : source_color = vec4(0.1, 0.0, 0.2, 1.0);
-uniform float outline_width : hint_range(0.0, 0.1) = 5.01;
+uniform float outline_width : hint_range(0.0, 0.1) = 7.01;
 
 void vertex() {
     vec4 clip_position = PROJECTION_MATRIX * (MODELVIEW_MATRIX * vec4(VERTEX, 1.0));
