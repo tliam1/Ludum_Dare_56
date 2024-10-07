@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://decemx6qkhskt"
+path="res://.godot/imported/char_meow.obj-577d513fcff6b6ae74ddb8f85c121ec9.mesh"
+
+[deps]
+
+files=["res://.godot/imported/char_meow.obj-577d513fcff6b6ae74ddb8f85c121ec9.mesh"]
+
+source_file="res://Asset/char_meow.obj"
+dest_files=["res://.godot/imported/char_meow.obj-577d513fcff6b6ae74ddb8f85c121ec9.mesh", "res://.godot/imported/char_meow.obj-577d513fcff6b6ae74ddb8f85c121ec9.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
