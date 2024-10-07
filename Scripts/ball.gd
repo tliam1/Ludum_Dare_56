@@ -9,7 +9,6 @@ enum AnimationState {
 
 var currentAnimationState := AnimationState.NORMAL
 var storedBounceForce : Vector3 = Vector3.ZERO
-var drag_factor : float = 0.99
 @export var gravity : float = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,7 +20,7 @@ func _ready():
 func _process(delta):
 	var speed : float = linear_velocity.length()
 	if gravity_scale != gravity:
-		gravity_scale = move_toward(gravity_scale, gravity, delta * 3)
+		gravity_scale = move_toward(gravity_scale, gravity, delta * 2)
 	pass
 
 func _integrate_forces(state):
@@ -31,8 +30,6 @@ func _integrate_forces(state):
 		state.set_linear_velocity(storedBounceForce)
 		storedBounceForce = Vector3.ZERO
 	
-	# Apply drag to slow the ball down
-	velocity *= drag_factor
 	state.set_linear_velocity(velocity)
 
 func apply_bounce_force(force : Vector3):
